@@ -1,6 +1,6 @@
-import { includeUpdatableUser } from './include-updatable-user';
+import { includeUpdatableResource } from './include-updatable-resource';
 
-export const UserInfoForm = includeUpdatableUser(
+export const UserInfoForm = includeUpdatableResource(
   ({ user, onChangeUser, onPostUser, onResetUser }) => {
     const { name, age } = user || {};
 
@@ -9,7 +9,7 @@ export const UserInfoForm = includeUpdatableUser(
         <label>
           Name:
           <input
-            name={name}
+            value={name}
             onChange={(e) => {
               onChangeUser({ name: e.target.value });
             }}
@@ -18,7 +18,7 @@ export const UserInfoForm = includeUpdatableUser(
         <label>
           Age:
           <input
-            name={age}
+            value={age}
             type="number"
             onChange={(e) => {
               onChangeUser({ age: Number(e.target.value) });
@@ -32,5 +32,6 @@ export const UserInfoForm = includeUpdatableUser(
       <h3>Loading...</h3>
     );
   },
-  '3'
+  '/users/2',
+  'user'
 );
